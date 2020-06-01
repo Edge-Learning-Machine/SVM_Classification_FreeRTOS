@@ -15,7 +15,7 @@
 
 void vHeart_ReadData( void *pvParameters )
 {
-    int xReceived[16];
+    int xReceived[14];
     BaseType_t xStatus;
     EventBits_t xEventGroupValue;
     const EventBits_t xBitsToWaitFor = ( vH_1_3_pTASK_BIT | vH_4_pTASK_BIT | vH_5_14_pTASK_BIT);
