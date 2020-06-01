@@ -15,6 +15,7 @@
 
 void vHeart_ReadData( void *pvParameters )
 {
+    float X_test[14];
     int xReceived[14];
     BaseType_t xStatus;
     EventBits_t xEventGroupValue;
@@ -47,6 +48,7 @@ void vHeart_ReadData( void *pvParameters )
 			if( xStatus == pdPASS )
 			{
 				vPrintStringAndNumber( "Queue[] = ", xReceived[i] );
+				X_test[i] += xReceived[i];
 			}
 			else
 			{
@@ -57,7 +59,7 @@ void vHeart_ReadData( void *pvParameters )
 		vPrintString("The Data are ready, sending to ELM for classification!!\r\n");
         vPrintString("******************************************************\r");
 
-        float *X_t = preprocess(xReceived);
+        float *X_t = preprocess(X_test);
         int class = svm_classification(X_t);
         vPrintStringAndNumber( "Class = ", class );
         //here you can call a function to classify the data with ELM
