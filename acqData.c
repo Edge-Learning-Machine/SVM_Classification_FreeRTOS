@@ -57,8 +57,8 @@ void vHeart_ReadData( void *pvParameters )
 		vPrintString("The Data are ready, sending to ELM for classification!!\r\n");
         vPrintString("******************************************************\r");
 
-        int *X_test = preprocess(xReceived);
-        int class = svm_classification(X_test);
+        float *X_t = preprocess(xReceived);
+        int class = svm_classification(X_t);
         vPrintStringAndNumber( "Class = ", class );
         //here you can call a function to classify the data with ELM
     }
